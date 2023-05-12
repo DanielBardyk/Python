@@ -90,25 +90,6 @@ def quick_sort_median(arr, left, right, count):
 
 	return count
 
-# ---- Program execution ----
-filename = input("Enter the filename: ")
-arr = []
-
-with open(f'{dir_path}/{filename}', 'r') as f:
-	n = int(f.readline())
-	for line in f:
-		arr.append(int(line))
-f.close()
-
-arr2 = arr.copy()
-
-comp1 = quick_sort(arr, 0, n - 1, 0)
-comp2 = quick_sort_median(arr2, 0, n - 1, 0)
-
-with open(f'{dir_path}/{os.path.basename(__file__).split(".")[0]}_output.txt', 'w') as f:
-	f.write(f"{comp1} {comp2}\n")
-f.close()
-
 # ---- Plotting ----
 
 def generate_data(n, gen_type="random"):
@@ -145,3 +126,31 @@ for size in sizes:
 		data_plot[gen_type]['quick_median'][size] = median_count
 
 mat(data_plot)
+
+def get_data(filename):
+	arr = []
+
+	with open(f'{dir_path}/{filename}', 'r') as f:
+		n = int(f.readline())
+		for line in f:
+			arr.append(int(line))
+	f.close()
+
+	return arr, n
+
+def main():
+	filename = input("Enter the filename: ")
+
+	array, num = get_data(filename)
+
+	arr2 = array.copy()
+
+	comp1 = quick_sort(array, 0, num - 1, 0)
+	comp2 = quick_sort_median(arr2, 0, num - 1, 0)
+
+	with open(f'{dir_path}/{os.path.basename(__file__).split(".")[0]}_output.txt', 'w') as f:
+		f.write(f"{comp1} {comp2}\n")
+	f.close()
+
+if __name__ == '__main__':
+	main()
