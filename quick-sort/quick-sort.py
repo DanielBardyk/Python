@@ -6,7 +6,7 @@ import sys
 sys.setrecursionlimit(5000)
 
 
-dir_path = os.path.dirname(__file__)
+DIR_PATH = os.path.dirname(__file__)
 
 # ---- Realization of simple quick sort ----
 
@@ -130,7 +130,7 @@ mat(data_plot)
 def get_data(filename):
 	arr = []
 
-	with open(f'{dir_path}/{filename}', 'r') as f:
+	with open(f'{DIR_PATH}/{filename}', 'r') as f:
 		n = int(f.readline())
 		for line in f:
 			arr.append(int(line))
@@ -138,19 +138,22 @@ def get_data(filename):
 
 	return arr, n
 
+def write_data(comp1, comp2):
+	with open(f'{DIR_PATH}/{os.path.basename(__file__).split(".")[0]}_output.txt', 'w') as f:
+		f.write(f"{comp1} {comp2}\n")
+	f.close()
+
 def main():
 	filename = input("Enter the filename: ")
 
-	array, num = get_data(filename)
+	array, size = get_data(filename)
 
 	arr2 = array.copy()
 
-	comp1 = quick_sort(array, 0, num - 1, 0)
-	comp2 = quick_sort_median(arr2, 0, num - 1, 0)
+	comp1 = quick_sort(array, 0, size - 1, 0)
+	comp2 = quick_sort_median(arr2, 0, size - 1, 0)
 
-	with open(f'{dir_path}/{os.path.basename(__file__).split(".")[0]}_output.txt', 'w') as f:
-		f.write(f"{comp1} {comp2}\n")
-	f.close()
+	write_data(comp1, comp2)
 
 if __name__ == '__main__':
 	main()

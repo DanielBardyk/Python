@@ -1,6 +1,6 @@
 import os
 
-dir_path = os.path.dirname(__file__)
+DIR_PATH = os.path.dirname(__file__)
 
 
 def reverse(arr_x, arr_i):
@@ -141,7 +141,7 @@ def get_filename():
 
 def get_initial_data(filename):
     D = []
-    with open(f'{dir_path}/{filename}', 'r') as f:
+    with open(f'{DIR_PATH}/{filename}', 'r') as f:
         f_row = f.readline().strip().split(' ')
         int(f_row[0])
         int(f_row[1])
@@ -151,7 +151,7 @@ def get_initial_data(filename):
 
 
 def write_result(favourites_list, user_x):
-    with open(f'{dir_path}/{os.path.basename(__file__).split(".")[0]}_output', 'w') as f:
+    with open(f'{DIR_PATH}/{os.path.basename(__file__).split(".")[0]}_output', 'w') as f:
         f.write(f"{user_x}\n")
         for line in favourites_list:
             f.write(f"{line[0]} {line[1]}\n")
