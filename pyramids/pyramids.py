@@ -67,7 +67,7 @@ class Hlow:
         if not self._heapsize:
             return self._heap[0]
         return self._heap[self._ROOT]
-        
+
 
 class Hhigh:
     def __init__(self, sizelimit):

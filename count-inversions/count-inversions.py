@@ -148,6 +148,7 @@ def get_initial_data(filename):
         for line in f:
             number = [int(item.strip()) for item in line.split(' ')[1:]]
             D.append(number)
+    return D
 
 
 def write_result(favourites_list, user_x):
